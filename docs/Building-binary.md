@@ -1,7 +1,7 @@
 
 此页面主要面向对 Vaultwarden 开发感兴趣或有特定原因想要构建自己的二进制文件的人。
 
-典型用户应该从基于 Alpine 的 Docker 镜像中[使用哪个容器镜像](Which-Container-image-to-use)、[预建二进制文件](Pre-built-binaries)，或者寻找 [第三方包](Third-party-packages)。
+典型用户应该从基于 Alpine 的 Docker 镜像中[使用哪个容器镜像](Which-container-image-to-use)、[预建二进制文件](Pre-built-binaries)，或者寻找 [第三方包](Third-party-packages)。
 
 ### 依赖
 

@@ -1,9 +1,9 @@
 * Home
-  * [主页](home)
+  * [主页](Home)
   * [常见问题](FAQs)
 * 容器镜像使用
-  * [使用哪个容器镜像](Which-Container-image-to-use)
-  * [启动一个容器](Starting-a-container)
+  * [使用哪个容器镜像](Which-container-image-to-use)
+  * [启动一个容器](Starting-a-Container)
   * [更新保管库管理员图片](Updating-the-vaultwarden-image)
   * [使用Docker Compose](Using-Docker-Compose)
   * [使用Podman](Using-Podman)
@@ -30,7 +30,7 @@
   * [更改持久数据位置](Changing-persistent-data-location)
   * [更改API请求大小限制](Changing-the-API-request-size-limit)
   * [改变Worker数量](Changing-the-number-of-workers)
-  * [SMTP配置](SMTP-configuration)
+  * [SMTP配置](SMTP-Configuration)
   * [密码提示显示](Password-hint-display)
   * [禁用或覆盖Vault接口托管](Disabling-or-overriding-the-Vault-interface-hosting)
   * [登录](Logging)

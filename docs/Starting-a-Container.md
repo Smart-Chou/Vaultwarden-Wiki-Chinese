@@ -17,7 +17,7 @@ sudo podman run -d --name vaultwarden -v vw-data:/data/:Z -p 80:80 vaultwarden/s
 
 该服务将在主机端口 80 或 8080 上公开。
 
-对于非 x86 硬件或运行特定版本，您可以[使用哪个容器镜像](Which-Container-image-to-use)。
+对于非 x86 硬件或运行特定版本，您可以[使用哪个容器镜像](Which-container-image-to-use)。
 
 如果您的 docker/vaultwarden 在具有固定 IP 的设备上运行，您可以将主机端口绑定到该特定 IP，从而防止将主机端口暴露给整个世界或网络。在host-port和container-port前面添加IP地址(例如192.168.0.2)如下：
 
