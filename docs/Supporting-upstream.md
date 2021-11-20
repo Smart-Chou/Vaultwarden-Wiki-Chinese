@@ -1,4 +1,4 @@
-Vaultwarden 仅提供 API（服务器）端实现，因此用户仍然依赖上游的客户端。 （移动应用程序、桌面应用程序和 Web Vault）这是 8bit Solutions LLC 在上游完成的大量工作。同时 Vaultwarden 支持一些付费功能并免费提供这些功能。这引发了一些[关于维持和支持上游的问题](https://github.com/dani-garcia/vaultwarden/issues/331) 开发。许多用户提出了这个问题，并询问他们如何在使用 Vaultwarden 时支持上游。
+Vaultwarden 仅提供 API(服务器)端实现，因此用户仍然依赖上游的客户端。 (移动应用程序、桌面应用程序和 Web Vault)这是 8bit Solutions LLC 在上游完成的大量工作。同时 Vaultwarden 支持一些付费功能并免费提供这些功能。这引发了一些[关于维持和支持上游的问题](https://github.com/dani-garcia/vaultwarden/issues/331) 开发。许多用户提出了这个问题，并询问他们如何在使用 Vaultwarden 时支持上游。
 
 ## 捐赠
 
@@ -18,4 +18,4 @@ Vaultwarden 仅提供 API（服务器）端实现，因此用户仍然依赖上�
 
 ## 帮助社区中的其他用户
 
-有很多新用户有时会在基本的东西上挣扎。帮助他们是支持项目的好方法。 （并发展社区）根据我在 Vaultwarden 社区的经验，很高兴看到人们在我回答他们的问题之前真正互相帮助 - 这节省了一些时间，而且我经常最终学到新东西。例如，有[Reddit 上的Bitwarden 社区](https://www.reddit.com/r/bitwarden)，也有[官方论坛](https://community.bitwarden.com/)。
+有很多新用户有时会在基本的东西上挣扎。帮助他们是支持项目的好方法。 (并发展社区)根据我在 Vaultwarden 社区的经验，很高兴看到人们在我回答他们的问题之前真正互相帮助 - 这节省了一些时间，而且我经常最终学到新东西。例如，有[Reddit 上的Bitwarden 社区](https://www.reddit.com/r/bitwarden)，也有[官方论坛](https://community.bitwarden.com/)。

@@ -16,25 +16,30 @@
   <meta name="keywords" content="Vaultwarden,Wiki,中文版" />
   <meta name="description" content="Vaultwarden Wiki 中文版">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
+  <!--link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css"-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/style.min.css"/>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar-folder.min.css"/>
 </head>
 <body>
-  <div id="app">加载中···</div>
+  <div id="app">很快！等我一下！</div>
   <script>
     window.$docsify = {
       el: '#app',
-      repo: 'Smart-Chou/smart-chou.github.io/blog/project/vaultwarden-wiki/',
+      repo: 'https://github.com/Smart-Chou/Vaultwarden-Wiki-Chinese/',
       maxLevel: 4,
       loadNavbar: true,
       loadSidebar: true,
+      loadFooter: true,
       autoHeader: true,
-      subMaxLevel: 2,
+      subMaxLevel: 4,
       auto2top: true,
       homepage: 'readme.md',
-      basePath: '/Vaultwarden-Wiki-Chinese/',
+      //basePath: '/Vaultwarden-Wiki-Chinese/',
+      basePath: '/docs/',
       relativePath: false,
       coverpage: true,
       name: 'Vaultwarden',
-      nameLink: '/',
+      nameLink: '/docs/',
       themeColor: '#2ED5C7',
       noEmoji: false,
       mergeNavbar: true,
@@ -52,7 +57,7 @@
         paths: 'auto', 
         placeholder: '想知道啥，快来搜！',
         noData: '啊？没有吗？母鸡啊！',
-        depth: 4,
+        depth: 6,
         hideOtherSidebarContent: true, 
         pathNamespaces: [],
         pathNamespaces: /^(\/())?(\/())?/
@@ -61,26 +66,56 @@
         countable: true,
         position: 'top',
         margin: '10px',
-        float: 'right',
+        float: 'left',
         fontsize:'1em',
         color:'rgba(220, 68, 55, 1)',
         language:'chinese',
         isExpected: true
       },
-      plugins: [
-        function(hook, vm) {
-          hook.beforeEach(function (html) {
-            var url = 'https://github.com/Smart-Chou/smart-chou.github.io/blog/project/vaultwarden-wiki/' + vm.route.file
-            var editHtml = '[:memo: 改善文档](' + url + ')\n'
-            return html
-              + '<br>'
-              + '<br>'
-              + '<br>'
-              + editHtml
-              + '文档最后更新于 {docsify-updated} '
-              
-          })
+      pagination: {
+          previousText: "上一篇",
+          nextText: "下一篇",
+          crossChapter: true,
+          crossChapterText: true,
+      },
+      'flexible-alerts': {
+        note: {
+          label: "信息"
         },
+        tip: {
+          label: "提示"
+        },
+        warning: {
+          label: "警告"
+        },
+        attention: {
+          label: "危险"
+        }
+      },
+      darkMode: {
+        dark: {
+          background: "#091a28",
+          toggleBtnBg: "#34495e",
+          textColor: "#b4b4b4"
+        },
+        light: {
+          background: "#ffffff",
+          toggleBtnBg: "var(--theme-color)",
+          textColor: "#34495e"
+        }
+      },
+      plugins: [
+        function (hook, vm) {
+          hook.afterEach(function (html) {
+            const footer = [
+              "<footer style='text-align: center;'>",
+              '<span>Copyright © 2020-2021 <a href="https://github.com/Smart-Chou/Vaultwarden-Wiki-Chinese/" target="_blank">MIFSH</a>. <br/>All rights reserved.',
+              "</footer>",
+              ].join("");
+            return html 
+                 + footer;
+          });
+         },
       ]
     };
   </script>
@@ -92,5 +127,11 @@
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-edit-on-github"></script>
   <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+  <!--script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js"></script-->
+  <script src="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/index.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+  <script src="//cdn.jsdelivr.net/npm/@alertbox/docsify-footer/dist/docsify-footer.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
 </body>
 </html>

@@ -1,23 +1,23 @@
-!>  :poop: !> 
+> [!attention] 
+> 我们的构建基于 MariaDB 客户端库，因为这是 Debian 提供的。<br/>
+> 对最新 Oracle MySQLv8 版本的支持需要额外注意。<br/>
+> 如果您坚持使用 MySQLv8 而不是 MariaDB，则使用旧密码散列方法而不是默认方法创建用户！
 
-我们的构建基于 MariaDB 客户端库，因为这是 Debian 提供的。
-对最新 Oracle MySQLv8 版本的支持需要额外注意。
-如果您坚持使用 MySQLv8 而不是 MariaDB，则使用旧密码散列方法而不是默认方法创建用户！
-
-!>  :poop: !> 
-
-!>  Alpine 目前**不支持**，在 amd64 上 Alpine 支持 sqlite 和 postgresql，在 armv7 上只支持 sqlite。
+> [!attention]
+> Alpine 目前**不支持**，在 amd64 上 Alpine 支持 sqlite 和 postgresql，在 armv7 上只支持 sqlite。
 
 ---
 
-要使用 MariaDB (MySQL) 后端，您可以使用 [官方 Docker 映像](https://hub.docker.com/r/vaultwarden/server) 或构建您自己的二进制文件 [启用 MySQL](https:/ /github.com/dani-garcia/vaultwarden/wiki/Building-binary#mysql-backend）。
+要使用 MariaDB (MySQL) 后端，您可以使用 [官方 Docker 映像](https://hub.docker.com/r/vaultwarden/server) 或构建您自己的二进制文件 [启用 MySQL](https://github.com/dani-garcia/vaultwarden/wiki/Building-binary#mysql-backend)。
 
-要运行二进制文件或容器，请确保设置了 ```DATABASE_URL``` 环境变量（即```DATABASE_URL='mysql://<user>:<password>@mysql/vaultwarden'``）。
+要运行二进制文件或容器，请确保设置了 ```DATABASE_URL``` 环境变量(即```DATABASE_URL='mysql://<user>:<password>@mysql/vaultwarden'``)。
 
 **连接字符串语法：**
+
 ```ini
 DATABASE_URL=mysql://[[user]:[password]@]host[:port][/database]
 ```
+
 如果您的密码包含特殊字符，则需要使用百分比编码。
 
 | ! | # | $ | % | & | ' | ( | ) | * | + | , | / | : | ; | = | ? | @ | [ | ] |
@@ -97,12 +97,14 @@ volumes:
 
 ### 创建数据库和用户
 
-1. 为 Vaultwarden 创建一个新的（空的）数据库（确保 Charset 和 Collat​​e 是正确的！）：
+1. 为 Vaultwarden 创建一个新的(空的)数据库(确保 Charset 和 Collat​​e 是正确的！)：
+
 ```sql
 CREATE DATABASE vaultwarden CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-2a. 创建一个新的数据库用户并授予数据库权限（MariaDB，v8 之前的 MySQL 版本）：
+2a. 创建一个新的数据库用户并授予数据库权限(MariaDB，v8 之前的 MySQL 版本)：
+
 ```sql
 CREATE USER 'vaultwarden'@'localhost' IDENTIFIED BY 'yourpassword';
 GRANT ALL ON `vaultwarden`.* TO 'vaultwarden'@'localhost';
@@ -110,19 +112,23 @@ FLUSH PRIVILEGES;
 ```
 
 2b. 如果您使用 MySQL v8.x，您需要像这样创建用户：
+
 ```sql
 -- Use this on MySQLv8 installations
 CREATE USER 'vaultwarden'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourpassword';
 GRANT ALL ON `vaultwarden`.* TO 'vaultwarden'@'localhost';
 FLUSH PRIVILEGES;
 ```
+
 如果您已经创建了用户并想要更改密码类型：
+
 ```sql
 -- Change password type from caching_sha2_password to native
 ALTER USER 'vaultwarden'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourpassword';
 ```
 
 您可能想尝试一组受限制的赠款：
+
 ```sql
 GRANT ALTER, CREATE, DELETE, DROP, INDEX, INSERT, SELECT, UPDATE ON `vaultwarden`.* TO 'vaultwarden'@'localhost';
 FLUSH PRIVILEGES;
@@ -135,40 +141,49 @@ FLUSH PRIVILEGES;
 1.首先按照上面的步骤1和2
 2. 配置 Vaultwarden 并启动它，以便diesel 可以运行迁移并正确设置架构。不要做别的。
 3. 停止保管员。
-4. 使用以下命令转储现有的 SQLite 数据库。仔细检查您的 sqlite 数据库的名称，默认应为 db.sqlite。<br>
-**注意：** 您需要在 Linux 系统上安装 sqlite3 命令。<br>
-我们需要从 sqlite 转储的输出中删除一些查询，例如创建表等。我们将在此处执行此操作。<br><br>
+4. 使用以下命令转储现有的 SQLite 数据库。仔细检查您的 sqlite 数据库的名称，默认应为 db.sqlite。<br/>
+**注意：** 您需要在 Linux 系统上安装 sqlite3 命令。<br/>
+我们需要从 sqlite 转储的输出中删除一些查询，例如创建表等。我们将在此处执行此操作。<br/><br/>
 您可以使用这种单线：
 
 ```bash
 sqlite3 db.sqlite3 .dump | grep "^INSERT INTO" | grep -v "__diesel_schema_migrations" > sqlitedump.sql ; echo -ne "SET FOREIGN_KEY_CHECKS=0;\n$(cat sqlitedump.sql)" > mysqldump.sql
 ```
+
 或以下紧随其后：
+
 ```bash
 sqlite3 db.sqlite3 .dump | grep "^INSERT INTO" | grep -v "__diesel_schema_migrations" > sqlitedump.sql
 echo "SET FOREIGN_KEY_CHECKS=0;" > mysqldump.sql
 cat sqlitedump.sql >> mysqldump.sql
 ```
+
 5. 加载您的 MySQL 转储：
+
 ```bash
 mysql --force --password --user=vaultwarden --database=vaultwarden < mysqldump.sql
 ```
+
 6. 再次启动保管库。
 
 *注意：使用 ```--show-warnings``` 加载您的 MySQL 转储将突出显示日期时间字段在导入期间被截断，**似乎**没问题。*
+
 ```
 Note (Code 1265): Data truncated for column 'created_at' at row 1
 Note (Code 1265): Data truncated for column 'updated_at' at row 1
 ```
 
 *注1：然后错误加载数据mysqldump.sql加载错误*
+
 ```
 error (1064): Syntax error near '"users" VALUES('9b5c2d13-8c4f-47e9-bd94-f0d7036ff581'*********)
 ```
+
 fix:
 ```bash
 sed -i 's#\"#\#g' mysqldump.sql
 ```
+
 ```bash
 mysql --password --user=vaultwarden
 use vaultwarden
@@ -177,7 +192,9 @@ exit
 ```
 
 *注 2：如果 SQLite 数据库从以前的旧版本迁移而来，MariaDB 可能会抱怨不匹配的值计数，例如：*
+
 ```
 ERROR 1136 (21S01) at line ###: Column count doesn't match value count at row 1
 ```
+
 版本跳转可能添加了新的数据库列。首先使用 SQLite 后端升级 vaultwarden 以在 SQLite 数据库上运行迁移，切换到 MariaDB 后端，然后重复上述迁移步骤。或者，查找自您安装的版本以来添加迁移的提交，并使用 `sqlite3` 手动运行迁移

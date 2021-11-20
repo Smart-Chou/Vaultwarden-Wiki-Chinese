@@ -1,17 +1,13 @@
-# Proxy-examples
-
 在本文档中，`<SERVER>` 是指您访问 Vaultwarden 的 IP 或域。如果反向代理和 Vaultwarden 都在同一个系统上运行，只需使用 `localhost`。
 
-默认情况下，Vaultwarden 在端口 80 上侦听 Web (REST API) 流量，在端口 3012 上侦听 WebSocket 流量（如果 \[\[WebSocket 通知|启用-WebSocket-通知]] 已启用）。反向代理应配置为终止 SSL/TLS 连接（最好在端口 443，HTTPS 的标准端口上）。然后，反向代理根据需要将传入的客户端请求传递到端口 80 或 3012 上的 vaultwarden，并在收到来自 vaultwarden 的响应后，将该响应传递回客户端。
+默认情况下，Vaultwarden 在端口 80 上侦听 Web (REST API) 流量，在端口 3012 上侦听 WebSocket 流量(如果 [启用WebSocket通知](Enabling-WebSocket-notifications) 已启用)。反向代理应配置为终止 SSL/TLS 连接(最好在端口 443，HTTPS 的标准端口上)。然后，反向代理根据需要将传入的客户端请求传递到端口 80 或 3012 上的 vaultwarden，并在收到来自 vaultwarden 的响应后，将该响应传递回客户端。
 
-请注意，当您将 vaultwarden 置于反向代理之后时，反向代理和 vaultwarden 之间的连接通常被假定为通过安全的专用网络，因此不需要加密。下面的示例假设您在此配置中运行，在这种情况下，您不应启用 vaultwarden 内置的 HTTPS 功能（即，不应设置 `ROCKET_TLS` 环境变量）。如果这样做，连接将失败，因为反向代理使用 HTTP 连接到 vaultwarden，但您将 vaultwarden 配置为期望使用 HTTPS。
+请注意，当您将 vaultwarden 置于反向代理之后时，反向代理和 vaultwarden 之间的连接通常被假定为通过安全的专用网络，因此不需要加密。下面的示例假设您在此配置中运行，在这种情况下，您不应启用 vaultwarden 内置的 HTTPS 功能(即，不应设置 `ROCKET_TLS` 环境变量)。如果这样做，连接将失败，因为反向代理使用 HTTP 连接到 vaultwarden，但您将 vaultwarden 配置为期望使用 HTTPS。
 
-通常使用 [Docker Compose](https://docs.docker.com/compose/) 将容器化服务链接在一起（例如，Vaultwarden 和反向代理）。有关此示例，请参阅 \[\[使用 Docker Compose|Using-Docker-Compose]]。
+通常使用 [Docker Compose](https://docs.docker.com/compose/) 将容器化服务链接在一起(例如，Vaultwarden 和反向代理)。有关此示例，请参阅 [使用Docker Compose](Using-Docker-Compose)
+可以使用 Mozilla 的 [SSL 配置生成器](https://ssl-config.mozilla.org) 生成网络服务器的安全 TLS 协议和密码配置。已知所有支持的浏览器和移动应用程序都可以使用`现代`配置。
 
-可以使用 Mozilla 的 [SSL 配置生成器](https://ssl-config.mozilla.org) 生成网络服务器的安全 TLS 协议和密码配置。已知所有支持的浏览器和移动应用程序都可以使用“现代”配置。
-
-Caddy 2.x\
-
+## Caddy 2.x
 
 Caddy 2 可以在某些情况下自动启用 HTTPS，检查[docs](https://caddyserver.com/docs/automatic-https).
 
@@ -27,7 +23,7 @@ Caddy 2 可以在某些情况下自动启用 HTTPS，检查[docs](https://caddys
     }
   }
 
-  # 如果您想通过 ACME（Let's Encrypt 或 ZeroSSL）获得证书，请取消注释。
+  # 如果您想通过 ACME(Let's Encrypt 或 ZeroSSL)获得证书，请取消注释。
   # tls {$EMAIL}
 
   # 或者，如果您提供自己的证书，则取消注释。你也可以使用这个选项
@@ -35,19 +31,19 @@ Caddy 2 可以在某些情况下自动启用 HTTPS，检查[docs](https://caddys
   # tls {$SSL_CERT_PATH} {$SSL_KEY_PATH}
 
   # 此设置可能与某些浏览器存在兼容性问题
-  #（例如，在 Firefox 上下载附件）。尝试禁用此功能
+  #(例如，在 Firefox 上下载附件)。尝试禁用此功能
   #如果你遇到问题。
   encode gzip
 
-  # 取消注释以提高安全性（警告：仅在您了解含义时才使用！）
+  # 取消注释以提高安全性(警告：仅在您了解含义时才使用！)
   # header {
   #      # 启用 HTTP 严格传输安全 (HSTS)
   #      Strict-Transport-Security "max-age=31536000;"
   #      # 启用跨站点过滤器 (XSS) 并告诉浏览器阻止检测到的攻击
   #      X-XSS-Protection "1; mode=block"
-  #      # 禁止在框架内渲染站点（点击劫持保护）
+  #      # 禁止在框架内渲染站点(点击劫持保护)
   #      X-Frame-Options "DENY"
-  #      # 防止搜索引擎索引（可选）
+  #      # 防止搜索引擎索引(可选)
   #      X-Robots-Tag "none"
   #      # 删除服务器名称
   #      -Server
@@ -72,8 +68,7 @@ Caddy 2 可以在某些情况下自动启用 HTTPS，检查[docs](https://caddys
 }
 ```
 
-lighttpd (by forkbomb9)\
-
+## lighttpd (by forkbomb9)
 
 ```
 server.modules += ( "mod_proxy" )
@@ -96,10 +91,9 @@ $HTTP["host"] == "vault.example.net" {
 }
 ```
 
-在 Vaultwarden 环境中，您必须将“IP\_HEADER”设置为“X-Forwarded-For”而不是“X-Real-IP”。
+在 Vaultwarden 环境中，您必须将`IP_HEADER`设置为`X-Forwarded-For`而不是`X-Real-IP`。
 
-Nginx (by shauder)\
-
+## Nginx (by shauder)
 
 ```nginx
 server {
@@ -157,13 +151,12 @@ server {
   send_timeout                777;
 ```
 
-Nginx with sub-path (by BlackDex)\
+## Nginx with sub-path (by BlackDex)
 
+在此示例中，Vaultwarden 将通过 https://bitwarden.example.tld/vault/
+提供 如果你想使用任何其他子路径，比如 `bitwarden` 或 `secret-vault`，你应该在下面的例子中更改 `/vault/` 以匹配。
 
-在此示例中，Vaultwarden 将通过 https://bitwarden.example.tld/vault/\
-提供 如果你想使用任何其他子路径，比如 `bitwarden` 或 `secret-vault`，你应该在下面的例子中更改 `/vault/` 以匹配。\
-\
-为此，您需要配置您的“DOMAIN”变量以使其匹配，因此它应该如下所示：
+为此，您需要配置您的`DOMAIN`变量以使其匹配，因此它应该如下所示：
 
 ```ini
 ; 添加子路径！否则这是行不通的！
@@ -241,10 +234,9 @@ server {
 }
 ```
 
-Nginx (by ypid)\
+## Nginx (by ypid)
 
-
-Ansible 库存示例，使用 DebOps 将 nginx 配置为 Vaultwarden 的反向代理。我选择在 URL 中使用 PSK 以提高安全性，以免将 API 暴露给 Internet 上的每个人，因为客户端应用程序尚不支持客户端证书（我已对其进行了测试）。注意：使用subpath/PSK需要对源代码打补丁重新编译，参考：https://github.com/dani-garcia/vaultwarden/issues/241#issuecomment-436376497。 /admin 未经测试。有关安全的子路径托管的一般讨论，请参阅：https://github.com/debops/debops/issues/1233
+Ansible 库存示例，使用 DebOps 将 nginx 配置为 Vaultwarden 的反向代理。我选择在 URL 中使用 PSK 以提高安全性，以免将 API 暴露给 Internet 上的每个人，因为客户端应用程序尚不支持客户端证书(我已对其进行了测试)。注意：使用subpath/PSK需要对源代码打补丁重新编译，参考：https://github.com/dani-garcia/vaultwarden/issues/241#issuecomment-436376497。 /admin 未经测试。有关安全的子路径托管的一般讨论，请参阅：https://github.com/debops/debops/issues/1233
 
 ```
 bitwarden__fqdn: 'vault.example.org'
@@ -298,8 +290,7 @@ nginx__servers:
           deny all;
 ```
 
-Nginx (NixOS)(by tklitschi)\
-
+## Nginx (NixOS)(by tklitschi)
 
 NixOS nginx 配置示例。有关 NixOS 部署的更多信息，请参阅 [部署 Wiki 页面](https://github.com/dani-garcia/vaultwarden/wiki/Deployment-examples)。
 
@@ -347,8 +338,7 @@ NixOS nginx 配置示例。有关 NixOS 部署的更多信息，请参阅 [部�
 }
 ```
 
-Apache (by fbartels)\
-
+## Apache (by fbartels)
 
 请记住启用 `mod_proxy_wstunnel` 和 `mod_proxy_http`，例如：`a2enmod proxy_wstunnel` 和 `a2enmod proxy_http`。
 
@@ -362,8 +352,8 @@ Apache (by fbartels)\
     SSLCACertificateFile ${SSLCA}
     ${SSLCHAIN}
 
-    ErrorLog \${APACHE_LOG_DIR}/bitwarden-error.log
-    CustomLog \${APACHE_LOG_DIR}/bitwarden-access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/bitwarden-error.log
+    CustomLog ${APACHE_LOG_DIR}/bitwarden-access.log combined
 
     RewriteEngine On
     RewriteCond %{HTTP:Upgrade} =websocket [NC]
@@ -376,7 +366,8 @@ Apache (by fbartels)\
 </VirtualHost>
 ```
 
-Apache in a sub-location (by ss89)\
+## Apache in a sub-location (by ss89)
+
 修改您的 docker 启动以包含子位置。
 
 ```
@@ -402,8 +393,8 @@ LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so`
     SSLCACertificateFile ${SSLCA}
     ${SSLCHAIN}
 
-    ErrorLog \${APACHE_LOG_DIR}/error.log
-    CustomLog \${APACHE_LOG_DIR}/access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 
     <Location /$sublocation/> #adjust here if necessary
         RewriteEngine On
@@ -417,8 +408,7 @@ LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so`
 </VirtualHost>
 ```
 
-Traefik v1 (docker-compose example)\
-
+## Traefik v1 (docker-compose example)
 
 ```yaml
 labels:
@@ -431,8 +421,7 @@ labels:
     - traefik.hub.protocol=ws
 ```
 
-Traefik v2 (docker-compose example by hwwilliams)\
-
+## Traefik v2 (docker-compose example by hwwilliams)
 
 **Traefik v1 labels migrated to Traefik v2**
 
@@ -450,7 +439,7 @@ labels:
 
 **迁移标签加上 HTTP 到 HTTPS 重定向**
 
-这些标签假设 Traefik 中为端口 80 和 443 定义的入口点分别是“web”和“websecure”。
+这些标签假设 Traefik 中为端口 80 和 443 定义的入口点分别是`web`和`websecure`。
 
 这些标签还假设您已经在 Traefik 中定义了一个默认的证书解析器。
 
@@ -480,8 +469,7 @@ labels:
   - traefik.http.services.bitwarden-websocket.loadbalancer.server.port=3012
 ```
 
-HAproxy (by BlackDex)\
-
+## HAproxy (by BlackDex)
 
 将这些行添加到您的 haproxy 配置中。
 
@@ -503,8 +491,7 @@ backend vaultwarden_ws
     server vwws 0.0.0.0:3012
 ```
 
-HAproxy (by [@williamdes](https://github.com/williamdes))\
-
+## HAproxy (by [@williamdes](https://github.com/williamdes))
 
 将这些行添加到您的 HAproxy 配置中。
 
@@ -540,10 +527,9 @@ backend vaultwarden_ws
     server vw_ws 0.0.0.0:3012
 ```
 
-HAproxy inside PfSense (by [@RichardMawdsley](https://github.com/RichardMawdsley))\
+## HAproxy inside PfSense (by [@RichardMawdsley](https://github.com/RichardMawdsley))
 
-
-作为 GUI 设置，下面的详细信息\说明供您在需要的地方添加。
+作为 GUI 设置，下面的详细信息说明供您在需要的地方添加。
 
 * 假设您已经有基本的 HTTP>HTTPS 重定向设置 [基本设置](https://blog.devita.co/pfsense-to-proxy-traffic-for-websites-using-pfsense/)
 
@@ -678,8 +664,8 @@ ACL5
 **Updates**
 
 ```
-在 30/07 以上更新 - 我在第一个配置之后意识到，因为 ACL1-4 有“Not”，他们正在将任何东西与他们的行动相匹配。所以 BlahBlahMcGee.FQDN.com 正在通过。这不是故意的，所以上面添加了 ACL5 来解决这个问题，它还消除了对默认后端的需要。
-30/07 再次更新 - ^ 是的，没用。这一切都源于 HaProxy 不允许在 ACL 中使用“AND”。叹。现在有了上面的内容，您就可以为根域配置一个前端。这有一个否认本身，以及任何未指定的内容。因此，如果您要通过多个其他子域，则需要将它们全部添加到 ACL01 下。现在一切正常！
+在 30/07 以上更新 - 我在第一个配置之后意识到，因为 ACL1-4 有`Not`，他们正在将任何东西与他们的行动相匹配。所以 BlahBlahMcGee.FQDN.com 正在通过。这不是故意的，所以上面添加了 ACL5 来解决这个问题，它还消除了对默认后端的需要。
+30/07 再次更新 - ^ 是的，没用。这一切都源于 HaProxy 不允许在 ACL 中使用`AND`。叹。现在有了上面的内容，您就可以为根域配置一个前端。这有一个否认本身，以及任何未指定的内容。因此，如果您要通过多个其他子域，则需要将它们全部添加到 ACL01 下。现在一切正常！
 ```
 
 **Important Notes**
@@ -721,4 +707,4 @@ use_backend VaultWarden-Notifications_ipvANY  if  ACL3
 use_backend VaultWarden-Notifications_ipvANY  if  !ACL4 
 ```
 
-为了进行测试，如果您在浏览器中导航到 /notifications/hub，那么您应该会看到一个页面，上面写着“WebSocket 协议错误：无法解析 WebSocket 密钥。”……这意味着它可以正常工作！ - 所有其他子页面都应该出现 Rocket 错误。
+为了进行测试，如果您在浏览器中导航到 /notifications/hub，那么您应该会看到一个页面，上面写着`WebSocket 协议错误：无法解析 WebSocket 密钥。`……这意味着它可以正常工作！ - 所有其他子页面都应该出现 Rocket 错误。

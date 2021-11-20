@@ -1,4 +1,4 @@
-vaultwarden 目前不提供独立的二进制文件作为单独的下载，但对于具有基于 Alpine 的 Docker 映像可用的平台（当前为 x86-64 和 ARMv7），您可以从官方 Docker 映像中提取独立的、静态链接的二进制文件。每个 Docker 映像还包括一个匹配的 Web Vault 构建（与平台无关）。
+vaultwarden 目前不提供独立的二进制文件作为单独的下载，但对于具有基于 Alpine 的 Docker 映像可用的平台(当前为 x86-64 和 ARMv7)，您可以从官方 Docker 映像中提取独立的、静态链接的二进制文件。每个 Docker 映像还包括一个匹配的 Web Vault 构建(与平台无关)。
 
 ## 在安装了 Docker 的情况下提取二进制文件
 
@@ -11,7 +11,7 @@ docker cp vw:/web-vault .
 docker rm vw
 ```
 
-如果你想要不同平台的二进制文件（例如，你只在 x86-64 机器上安装了 Docker，但你想在 Raspberry Pi 上运行 vaultwarden），请将 `--platform` 选项添加到 `docker pull`命令：
+如果你想要不同平台的二进制文件(例如，你只在 x86-64 机器上安装了 Docker，但你想在 Raspberry Pi 上运行 vaultwarden)，请将 `--platform` 选项添加到 `docker pull`命令：
 ```
 docker pull --platform linux/arm/v7 vaultwarden/server:alpine
 # 像上面一样运行剩余的命令。
@@ -57,17 +57,18 @@ drwx------ 8 user user     4096 Feb  6 21:46 output/web-vault/
 如果您想要 ARMv7 映像，您目前必须通过摘要下载它。
 
 转到 https://hub.docker.com/r/vaultwarden/server/tags?name=alpine 并找到 `alpine` 标签的条目。
-单击“linux/arm/v7”映像的部分摘要：
-![#](https://i.imgur.com/T5WdwtS.png)
+单击`linux/arm/v7`映像的部分摘要：
+![#](https://cdn.jsdelivr.net/gh/Smart-Chou/webphoto@latest/note/Hsz8vJ4.png)
 
 这应该会将您带到一个显示完整摘要的页面：
 
-![#](https://i.imgur.com/Hsz8vJ4.png)
+![#](https://cdn.jsdelivr.net/gh/Smart-Chou/webphoto@latest/note/T5WdwtS.png)
 
 复制完整摘要，并将上面的 `docker-image-extract vaultwarden/server:alpine` 命令替换为
 `docker-image-extract Vaultwarden/server:<full_digest>`。
 
 例如：
+
 ```
 $ ./docker-image-extract vaultwarden/server:sha256:ef129de113bec3409b6370c37a6e5573a1dacc051a3aae2a8a3339323ae63623
 ```

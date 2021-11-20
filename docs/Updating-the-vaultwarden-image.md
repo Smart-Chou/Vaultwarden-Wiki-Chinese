@@ -1,4 +1,4 @@
-更新很简单，您只需确保保留已安装的卷。如果你在例子中使用了绑定挂载的路径 [[here|Starting-a-Container]]，你只需要`pull`最新的镜像，`stop`和`rm`当前容器，然后启动一个新的一个和以前一样的方式：
+更新很简单，您只需确保保留已安装的卷。如果你在例子中使用了绑定挂载的路径 [here](Starting-a-container)，你只需要`pull`最新的镜像，`stop`和`rm`当前容器，然后启动一个新的一个和以前一样的方式：
 
 ```sh
 # 拉取最新版本
@@ -11,7 +11,8 @@ docker rm vaultwarden
 # 启动一个挂载数据的新容器
 docker run -d --name vaultwarden -v /vw-data/:/data/ -p 80:80 vaultwarden/server:latest
 ```
-然后访问 [http://localhost:80](http://localhost:80)
+
+然后访问 <http://localhost:80>
 
 如果您没有为持久数据绑定挂载卷，则需要一个中间步骤，使用中间容器保存数据：
 
@@ -45,7 +46,7 @@ docker-compose pull
 docker-compose start
 ```
 
-## 使用 systemd 服务时更新（在本例中为 Debian/Raspbian）
+## 使用 systemd 服务时更新(在本例中为 Debian/Raspbian)
 
 ```sh
 sudo systemctl restart vaultwarden.service
@@ -66,16 +67,18 @@ docker images
 #在那里你会看到所有未使用的镜像
 #
 ```
-restart 命令将停止容器，拉取最新的镜像，再次运行容器。
-prune 命令将删除现在的旧容器（-f 代表：不要求确认）。
 
-如果需要，将这些放入 cronjob 中（时间可以更改）：
+restart 命令将停止容器，拉取最新的镜像，再次运行容器。
+prune 命令将删除现在的旧容器(-f 代表：不要求确认)。
+
+如果需要，将这些放入 cronjob 中(时间可以更改)：
 ```
 $ sudo crontab -e
 0 2 * * * sudo systemctl restart vaultwarden.service
 
 0 3 * * * sudo /usr/bin/docker system prune -f
 ```
+
 使用命令
 
 `which docker`

@@ -1,4 +1,4 @@
-Dockerfile（球童生成器）
+Dockerfile(Caddy 生成器)
 
 ```nginx
 FROM caddy:builder AS builder
@@ -14,7 +14,7 @@ COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 docker build -t [你的名字]/caddycfdns。
 ```
 
-Caddyfile（作为反向代理）
+Caddyfile(作为反向代理)
 
 ```nginx
 https://[您的域名]:443 {
@@ -30,9 +30,9 @@ https://[您的域名]:443 {
         Strict-Transport-Security "max-age=31536000;"
        # 启用跨站过滤器 (XSS) 并告诉浏览器阻止检测到的攻击
         X-XSS-Protection "1; mode=block"
-       # 禁止在框架内渲染站点（点击劫持保护）
+       # 禁止在框架内渲染站点(点击劫持保护)
        X-Frame-Options "DENY"
-       # 防止搜索引擎索引（可选）
+       # 防止搜索引擎索引(可选)
        X-Robots-Tag "none"
        # 删除服务器名称
        -Server

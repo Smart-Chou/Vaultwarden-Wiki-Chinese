@@ -1,6 +1,6 @@
 默认情况下，`vaultwarden/server` 使用 root 用户在容器内运行服务。如果您希望以非 root 用户身份运行容器，您需要设置以下几点：
 
-1. 确保安装在容器内的目录可由用户写入。例如，如果您决定以 `nobody` 身份运行，则该目录需要 id 为 65534 的用户可写。有关在容器内指定用户的其他方法，请参阅 [docker 文档](https://docs.docker.com /engine/reference/run/#user)，在我们的示例中，我们将使用 `nobody`。
+1. 确保安装在容器内的目录可由用户写入。例如，如果您决定以 `nobody` 身份运行，则该目录需要 id 为 65534 的用户可写。有关在容器内指定用户的其他方法，请参阅 [docker 文档](https://docs.docker.com/engine/reference/run/#user)，在我们的示例中，我们将使用 `nobody`。
 
 ```bash
 # 在主机上创建目录，将其更改为您首选的路径
@@ -26,4 +26,4 @@ docker run -d \
   vaultwarden/server:latest
 ```
 
-请注意，端口映射（`-p 80:1024`）反映了 `ROCKET_PORT` 设置。 
+请注意，端口映射(`-p 80:1024`)反映了 `ROCKET_PORT` 设置。 

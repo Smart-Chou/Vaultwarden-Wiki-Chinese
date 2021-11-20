@@ -1,8 +1,9 @@
-!>  :skull:
-    **使用这些命令风险自负！**
-    **在做任何可能破坏整个保险库的事情之前，请务必创建备份！**
+> [!attention]
+> **使用这些命令风险自负！**
+>**在做任何可能破坏整个保险库的事情之前，请务必创建备份！**
 
 ## 一般的
+
 Vaultwarden 最初设计时仅使用 SQLite，但当时 MariaDB (MySQL) 和 PostgreSQL 也被添加到组合中。
 对于 SQLite，您不必运行单独的服务器或容器，而对于其他两个，您确实需要运行一些额外的东西。
 
@@ -11,12 +12,12 @@ Vaultwarden 最初设计时仅使用 SQLite，但当时 MariaDB (MySQL) 和 Post
 
 # 如何从 MariaDB 迁移到 SQLite
 
-确保您对 SQLite 和 MariaDB 使用相同版本的 Vaultwarden（Docker 或自定义构建），不要在这些步骤之间更新 Docker 映像。
+确保您对 SQLite 和 MariaDB 使用相同版本的 Vaultwarden(Docker 或自定义构建)，不要在这些步骤之间更新 Docker 映像。
 要迁移到 SQLite，我们首先需要有一个 SQLite 数据库文件，我们可以用它来传输数据。
 要创建此文件，您需要停止当前的 Vaultwarden 实例，并将其配置为使用 SQLite。
-例如，您可以通过将“DATABASE_URL”从“DATABASE_URL=mysql://<vaultwarden_user>:<vaultwarden_pw>@mariadb/vaultwarden”更改为“DATABASE_URL=/data/db.sqlite3”来实现。 （ `/data` 是您使用的 `-v` 卷的 Docker 容器内的内部路径）。
+例如，您可以通过将`DATABASE_URL`从`DATABASE_URL=mysql://<vaultwarden_user>:<vaultwarden_pw>@mariadb/vaultwarden`更改为`DATABASE_URL=/data/db.sqlite3`来实现。 ( `/data` 是您使用的 `-v` 卷的 Docker 容器内的内部路径)。
 
-更改配置后，启动 Vaultwarden，它应该通过检查以“Executing migration script ....”开头的行的日志来显示它执行了一些迁移。
+更改配置后，启动 Vaultwarden，它应该通过检查以`Executing migration script ....`开头的行的日志来显示它执行了一些迁移。
 
 现在再次停止 Vaultwarden，以便您可以开始迁移。
 您需要用于 MariaDB 的数据库主机和凭据才能继续。
@@ -44,7 +45,7 @@ mysqldump \
 
 系统会提示您输入密码，输入密码并按回车键。
 
-这应该会生成一个文件“mysql-to-sqlite.sql”来保存你的数据库。
+这应该会生成一个文件`mysql-to-sqlite.sql`来保存你的数据库。
 现在查找 db.sqlite3 文件 Vaultwarden 在您第一次使用 SQLite 作为数据库启动 Vaultwarden 时在上一步中创建的文件。
 复制或移动 `mysql-to-sqlite.sql`，以便 `db.sqlite3` 和导出都在同一目录中。
 现在您可以执行以下操作

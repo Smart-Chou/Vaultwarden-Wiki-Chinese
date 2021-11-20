@@ -2,7 +2,7 @@
 
 ## Caddy 与 HTTP 挑战
 
-此示例假设您已[安装](https://docs.docker.com/compose/install/) Docker Compose，您有一个用于 vaultwarden 实例的域名（例如，`vaultwarden.example.com`），并且它将是公开的。
+此示例假设您已[安装](https://docs.docker.com/compose/install/) Docker Compose，您有一个用于 vaultwarden 实例的域名(例如，`vaultwarden.example.com`)，并且它将是公开的。
 
 首先创建一个新目录并更改为该目录。接下来，在下面创建 `docker-compose.yml`，确保为 `DOMAIN` 和 `EMAIL` 变量替换适当的值。
 
@@ -36,7 +36,7 @@ services:
       - LOG_FILE=/data/access.log
 ```
 
-在同一目录中，创建下面的“Caddyfile”。 （这个文件不需要修改。）
+在同一目录中，创建下面的`Caddyfile`。 (这个文件不需要修改。)
 ```
 {$DOMAIN}:443 {
   log {
@@ -51,7 +51,7 @@ services:
   tls {$EMAIL}
 
   # 此设置可能与某些浏览器存在兼容性问题
-  #（例如，在 Firefox 上下载附件）。尝试禁用此功能
+  #(例如，在 Firefox 上下载附件)。尝试禁用此功能
   #如果你遇到问题。
   encode gzip
 
@@ -82,7 +82,7 @@ stops and destroys the containers.
 
 ## 球童与 DNS 挑战
 
-此示例与上一个示例相同，但适用于您不希望您的实例可公开访问的情况（即，您只能从本地网络访问它）。此示例使用 Duck DNS 作为 DNS 提供程序。有关更多背景信息以及如何设置 Duck DNS 的详细信息，请参阅[[使用 Let's Encrypt certs 运行私有 vaultwarden 实例|Running-a-private-vaultwarden-instance-with-Let's-Encrypt-certs]]。
+此示例与上一个示例相同，但适用于您不希望您的实例可公开访问的情况(即，您只能从本地网络访问它)。此示例使用 Duck DNS 作为 DNS 提供程序。有关更多背景信息以及如何设置 Duck DNS 的详细信息，请参阅[使用 Let's Encrypt 证书运行私有 Vaultwarden 实例](Running-a-private-vaultwarden-instance-with-Let's-Encrypt-certs)。
 
 首先创建一个新目录并更改为该目录。接下来，在下面创建 `docker-compose.yml`，确保为 `DOMAIN` 和 `EMAIL` 变量替换适当的值。
 
@@ -118,9 +118,9 @@ services:
       - LOG_FILE=/data/access.log
 ```
 
-库存的 Caddy 构建（包括 Docker 镜像中的构建）不包含 DNS 挑战模块，因此接下来您需要[获取自定义 Caddy 构建](https://github.com/dani-garcia/vaultwarden /wiki/Running-a-private-vaultwarden-instance-with-Let%27s-Encrypt-certs#getting-a-custom-caddy-build）。将自定义构建重命名为 `caddy` 并将其移动到与 `docker-compose.yml` 相同的目录下。确保 `caddy` 文件是可执行的（例如，`chmod a+x caddy`）。上面的`docker-compose.yml` 文件将自定义构建绑定安装到`caddy:2` 容器中，替换了库存构建。
+库存的 Caddy 构建(包括 Docker 镜像中的构建)不包含 DNS 挑战模块，因此接下来您需要[获取自定义 Caddy 构建](https://github.com/dani-garcia/vaultwarden/wiki/Running-a-private-vaultwarden-instance-with-Let%27s-Encrypt-certs#getting-a-custom-caddy-build)。将自定义构建重命名为 `caddy` 并将其移动到与 `docker-compose.yml` 相同的目录下。确保 `caddy` 文件是可执行的(例如，`chmod a+x caddy`)。上面的`docker-compose.yml` 文件将自定义构建绑定安装到`caddy:2` 容器中，替换了库存构建。
 
-在同一目录中，创建下面的“Caddyfile”。 （这个文件不需要修改。）
+在同一目录中，创建下面的`Caddyfile`。 (这个文件不需要修改。)
 ```
 {$DOMAIN}:443 {
   log {
@@ -137,7 +137,7 @@ services:
   }
 
   # 此设置可能与某些浏览器存在兼容性问题
-  #（例如，在 Firefox 上下载附件）。尝试禁用此功能
+  #(例如，在 Firefox 上下载附件)。尝试禁用此功能
   #如果你遇到问题。
   encode gzip
 

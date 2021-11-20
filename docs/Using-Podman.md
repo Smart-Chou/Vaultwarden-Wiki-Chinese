@@ -1,7 +1,9 @@
 [Podman](https://podman.io/) 是 Docker 的无守护进程替代品，主要兼容 Docker 容器。
 
-# 创建systemd服务文件
-由于其无守护进程的架构，Podman 比 Docker 更容易在 systemd 中运行。它带有一个方便的[生成 systemd 命令](http://docs.podman.io/en/latest/markdown/podman-generate-systemd.1.html)，可以生成 systemd 文件。这是一篇[详细介绍的好文章](https://www.redhat.com/sysadmin/podman-shareable-systemd-services) 以及[这篇文章详细介绍了一些最近的更新](https://www.redhat.com/sysadmin/podman-shareable-systemd-services) www.redhat.com/sysadmin/improved-systemd-podman）。
+## 创建systemd服务文件
+
+由于其无守护进程的架构，Podman 比 Docker 更容易在 systemd 中运行。它带有一个方便的[生成 systemd 命令](http://docs.podman.io/en/latest/markdown/podman-generate-systemd.1.html)，可以生成 systemd 文件。这是一篇[详细介绍的好文章](https://www.redhat.com/sysadmin/podman-shareable-systemd-services) 以及[这篇文章详细介绍了一些最近的更新](https://www.redhat.com/sysadmin/podman-shareable-systemd-services) www.redhat.com/sysadmin/improved-systemd-podman)。
+
 ```sh
 $ podman run -d --name vaultwarden -v /vw-data/:/data/:Z -e ROCKET_PORT=8080 -p 8080:8080 vaultwarden/server:latest
 54502f309f3092d32b4c496ef3d099b270b2af7b5464e7cb4887bc16a4d38597
@@ -33,6 +35,7 @@ $ systemctl start container-vaultwarden.service
 ```
 
 ## 每次重启都会新建一个容器
+
 如果我们想在每次服务启动时创建一个新的容器，我们可以使用 `podman generate systemd --new` 命令来生成一个重新创建容器的服务文件
 
 ```sh
@@ -58,14 +61,15 @@ PIDFile=/%t/%n-pid
 [Install]
 WantedBy=multi-user.target default.target
 ```
+
 其中 `vaultwarden.conf` 环境文件可以包含您需要的所有容器环境值
 ```conf
 ROCKET_PORT=8080
 ```
 
-如果您希望容器具有特定名称，并且进程未正确清理，则可能需要添加 `ExecStartPre=/usr/bin/podman rm -i -f vaultwarden`。请注意，此方法目前不适用于 `User=` 选项用户（请参阅 https://github.com/containers/podman/issues/5572）。
+如果您希望容器具有特定名称，并且进程未正确清理，则可能需要添加 `ExecStartPre=/usr/bin/podman rm -i -f vaultwarden`。请注意，此方法目前不适用于 `User=` 选项用户(请参阅 https://github.com/containers/podman/issues/5572)。
 
-# 故障排除
+## 故障排除
 ##调试systemd服务文件
 如果主机宕机或容器崩溃，systemd 服务文件应该自动停止现有容器并再次启动它。我们可以通过`journalctl -u container-vaultwarden -t 100`找到错误。
 
