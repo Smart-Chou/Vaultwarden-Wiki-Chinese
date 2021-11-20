@@ -23,7 +23,7 @@ Vaultwarden 实现了大多数功能所需的 Bitwarden API，包括：
 - [实时同步](https://bitwarden.com/blog/post/live-sync/)(仅限 WebSocket)用于桌面/浏览器客户端/扩展
 - [垃圾箱](https://bitwarden.com/help/article/managing-items/#items-in-the-trash)(软删除)
 - [主密码重新提示](https://bitwarden.com/help/article/managing-items/#protect-individual-items)
-- 通过[email](https://bitwarden.com/help/article/setup-two-step-login-email/)、[Duo](https://bitwarden.com/help/article/)两步登录setup-two-step-login-duo/)、[YubiKey](https://bitwarden.com/help/article/setup-two-step-login-yubikey/) 和 [FIDO2 WebAuthn](https://bitwarden.com/help/article/setup-two-step-login-yubikey/) bitwarden.com/help/article/setup-two-step-login-fido/)
+- 通过[email](https://bitwarden.com/help/article/setup-two-step-login-email/)、[Duo](https://help.bitwarden.in/two-step-login/two-step-login-via-duo)、[YubiKey](https://bitwarden.com/help/article/setup-two-step-login-yubikey/) 和 [FIDO2 WebAuthn](https://bitwarden.com/help/article/setup-two-step-login-fido/)两步登录
 - [目录连接器](https://bitwarden.com/help/article/directory-sync/) 
   支持(基本实现，无组支持)<br/>仅支持 [v2.9.2](https://github.com/bitwarden/directory-connector/releases/tag/v2.9.2) 及更低版本，v2.9.3 及更高版本不支持使用不同的登录方式然而。
 - 某些企业政策：

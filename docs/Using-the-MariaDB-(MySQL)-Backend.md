@@ -8,9 +8,9 @@
 
 ---
 
-要使用 MariaDB (MySQL) 后端，您可以使用 [官方 Docker 映像](https://hub.docker.com/r/vaultwarden/server) 或构建您自己的二进制文件 [启用 MySQL](https://github.com/dani-garcia/vaultwarden/wiki/Building-binary#mysql-backend)。
+要使用 MariaDB (MySQL) 后端，您可以使用 [官方 Docker 映像](https://hub.docker.com/r/vaultwarden/server) 或构建您自己的二进制文件 [启用 MySQL](Building-binary#mysql-后端)。
 
-要运行二进制文件或容器，请确保设置了 ```DATABASE_URL``` 环境变量(即```DATABASE_URL='mysql://<user>:<password>@mysql/vaultwarden'``)。
+要运行二进制文件或容器，请确保设置了 `DATABASE_URL` 环境变量(即`DATABASE_URL='mysql://<user>:<password>@mysql/vaultwarden'`)。
 
 **连接字符串语法：**
 

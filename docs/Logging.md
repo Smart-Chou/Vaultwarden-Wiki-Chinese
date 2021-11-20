@@ -15,7 +15,7 @@ docker run -d --name vaultwarden \
 
 ##更改日志级别
 
-要减少日志消息的数量，您可以将日志级别设置为`警告`(默认为`信息`)。 [日志级别](https://docs.rs/log/0.4.7/log/enum.Level.html#variants) 可以通过环境变量`LOG_LEVEL`进行调整，同时还可以设置`EXTENDED_LOGGING=true`。注意：使用日志级别`警告`或`错误`仍然允许 [Fail2Ban](https://github.com/dani-garcia/vaultwarden/wiki/Fail2Ban-Setup) 正常工作。
+要减少日志消息的数量，您可以将日志级别设置为`警告`(默认为`信息`)。 [日志级别](https://docs.rs/log/0.4.7/log/enum.Level.html#variants) 可以通过环境变量`LOG_LEVEL`进行调整，同时还可以设置`EXTENDED_LOGGING=true`。注意：使用日志级别`警告`或`错误`仍然允许 [Fail2Ban](Fail2Ban-Setup) 正常工作。
 
 `LOG_LEVEL` 选项是：`trace`、`debug`、`info`、`warn`、`error`或`off`。
 

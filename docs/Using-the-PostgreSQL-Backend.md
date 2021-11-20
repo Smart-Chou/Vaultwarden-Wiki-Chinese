@@ -1,4 +1,4 @@
-要使用 PostgreSQL 后端，您可以使用 [官方 Docker 映像](https://hub.docker.com/r/vaultwarden/server) 或构建您自己的二进制文件 [启用 PostgreSQL](https://github.com/dani-garcia/vaultwarden/wiki/Building-binary#postgresql-backend)。
+要使用 PostgreSQL 后端，您可以使用 [官方 Docker 映像](https://hub.docker.com/r/vaultwarden/server) 或构建您自己的二进制文件 [启用 PostgreSQL](Building-binary#postgresql-后端)。
 
 要运行二进制文件或容器，请确保设置了 `DATABASE_URL` 环境变量(即 `DATABASE_URL='postgresql://<user>:<password>@postgresql/bitwarden'`)
 
@@ -12,7 +12,7 @@ DATABASE_URL=postgresql://[[user]:[password]@]host[:port][/database]
 
 ```
 -e 'DATABASE_URL=postgresql://postgresadmin:strongpassword@postgres:5432/vaultwarden'
-```。
+```
 
 如果您的密码包含特殊字符，则需要使用百分比编码。
 
@@ -40,7 +40,7 @@ GRANT all privileges ON database vaultwarden TO vaultwarden;
 3. 配置 Vaultwarden 并启动它，以便diesel 可以运行迁移并正确设置架构。不要做别的。
 4. 停止保管员。
 5. 安装[pgloader](http://pgloader.io/)
-6. [禁用WAL](https://github.com/dani-garcia/vaultwarden/wiki/Running-without-WAL-enabled#1-disable-wal-on-old-db) SQLite 数据库。
+6. [禁用WAL](Running-without-WAL-enabled#_1-在旧数据库上禁用-wal) SQLite 数据库。
 7.创建文件bitwarden.load，内容如下：
 ```
 load database

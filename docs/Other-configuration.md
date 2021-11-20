@@ -1,1 +1,1 @@
-虽然这在小型部署中不太可能需要，但您可以使用 [Rocket](https://rocket.rs) 处理的环境变量来微调一些其他设置，例如工作人员的数量，请参阅 [文档] 中的详细信息(https://rocket.rs/guide/configuration/#environment-variables)。
+虽然这在小型部署中不太可能需要，但您可以使用 [Rocket](https://rocket.rs) 处理的环境变量来微调一些其他设置，例如工作人员的数量，请参阅 [文档](https://rocket.rs/guide/configuration/#environment-variables) 中的详细信息。

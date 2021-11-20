@@ -67,16 +67,16 @@ services:
 }
 ```
 
-运行
+运行以下命令以创建和启动容器。这个 `docker-compose.yml` 文件中的服务的专用网络将自动创建，只有 Caddy 是公开的。
 ```bash
 docker-compose up -d
 ```
-以创建和启动容器。这个 `docker-compose.yml` 文件中的服务的专用网络将自动创建，只有 Caddy 是公开的。
+
+停止并销毁容器：
 
 ```bash
 docker-compose down
 ```
-stops and destroys the containers.
 
 [此处](https://github.com/sosandroid/docker-bitwarden_rs-caddy-synology) 提供了一个类似的基于 Caddy 的 Synology 示例。
 
@@ -118,7 +118,7 @@ services:
       - LOG_FILE=/data/access.log
 ```
 
-库存的 Caddy 构建(包括 Docker 镜像中的构建)不包含 DNS 挑战模块，因此接下来您需要[获取自定义 Caddy 构建](https://github.com/dani-garcia/vaultwarden/wiki/Running-a-private-vaultwarden-instance-with-Let%27s-Encrypt-certs#getting-a-custom-caddy-build)。将自定义构建重命名为 `caddy` 并将其移动到与 `docker-compose.yml` 相同的目录下。确保 `caddy` 文件是可执行的(例如，`chmod a+x caddy`)。上面的`docker-compose.yml` 文件将自定义构建绑定安装到`caddy:2` 容器中，替换了库存构建。
+库存的 Caddy 构建(包括 Docker 镜像中的构建)不包含 DNS 挑战模块，因此接下来您需要[获取自定义 Caddy 构建](Running-a-private-vaultwarden-instance-with-Let%27s-Encrypt-certs#getting-a-custom-caddy-build)。将自定义构建重命名为 `caddy` 并将其移动到与 `docker-compose.yml` 相同的目录下。确保 `caddy` 文件是可执行的(例如，`chmod a+x caddy`)。上面的`docker-compose.yml` 文件将自定义构建绑定安装到`caddy:2` 容器中，替换了库存构建。
 
 在同一目录中，创建下面的`Caddyfile`。 (这个文件不需要修改。)
 ```

@@ -14,14 +14,14 @@
 
 ### 0. 进行备份
 
-这些更改通常是安全的并且可以在不丢失数据的情况下完成，但是在任何更改之前[备份您的数据](https://github.com/dani-garcia/vaultwarden/wiki/Backing-up-your-vault) 是强烈建议。
+这些更改通常是安全的并且可以在不丢失数据的情况下完成，但是在任何更改之前[备份您的数据](Backing-up-your-vault) 是强烈建议。
 
 ### 1. 在旧数据库上禁用 WAL
 
 如果你有旧的 DB，它是在启用 WAL 的情况下使用的，你需要使用 sqlite 禁用它：
 
 1. 停止`Vaultwarden`
-2. 找到您的 [数据文件夹](https://github.com/dani-garcia/vaultwarden/wiki/Changing-persistent-data-location)。通常那里会有 `db.sqlite3` 文件，除非你指定了一些其他的名称来使用。
+2. 找到您的 [数据文件夹](Changing-persistent-data-location)。通常那里会有 `db.sqlite3` 文件，除非你指定了一些其他的名称来使用。
 3. 使用 sqlite 打开文件：
 
 ```bash

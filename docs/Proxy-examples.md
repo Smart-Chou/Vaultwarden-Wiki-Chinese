@@ -292,7 +292,7 @@ nginx__servers:
 
 ## Nginx (NixOS)(by tklitschi)
 
-NixOS nginx 配置示例。有关 NixOS 部署的更多信息，请参阅 [部署 Wiki 页面](https://github.com/dani-garcia/vaultwarden/wiki/Deployment-examples)。
+NixOS nginx 配置示例。有关 NixOS 部署的更多信息，请参阅 [部署 Wiki 页面](Deployment-examples)。
 
 ```nix
 { config, ... }:

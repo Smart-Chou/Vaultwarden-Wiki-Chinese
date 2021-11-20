@@ -33,7 +33,7 @@
 
 ### NixOS(由 tklitschi 提供)
 
-NixOS 有一个示例 bitwarden 配置。这不是很复杂，你有后端选项，你想使用的数据库类型，专用备份系统的备份目录，启用它的选项和配置选项。对于配置选项，您只需以 nix 语法传递 .env 变量 [来自 .env 模板](https://github.com/dani-garcia/vaultwarden/blob/1.13.1/.env.template)。 有关 nixos-nginx 示例配置，请参阅 [代理示例](https://github.com/dani-garcia/vaultwarden/wiki/Proxy-examples)。
+NixOS 有一个示例 bitwarden 配置。这不是很复杂，你有后端选项，你想使用的数据库类型，专用备份系统的备份目录，启用它的选项和配置选项。对于配置选项，您只需以 nix 语法传递 .env 变量 [来自 .env 模板](https://github.com/dani-garcia/vaultwarden/blob/1.13.1/.env.template)。 有关 nixos-nginx 示例配置，请参阅 [代理示例](Proxy-examples)。
 
 Example Config
 

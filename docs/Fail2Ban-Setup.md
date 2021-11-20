@@ -145,7 +145,7 @@ ignoreregex =
 ```
 [YYYY-MM-DD hh:mm:ss][vaultwarden::api::identity][ERROR] Username or password is incorrect. Try again. IP: 127.0.0.1. Username: email@example.com.
 ```
-要解决此问题，请通过 X-Real-IP 标头将真正的远程地址转发给 Vaultwarden。如何执行此操作取决于您使用的代理。例如，在 Caddy 2.x 中，当您定义反向代理时，请定义 `header_up X-Real-IP {remote_host}`。有关更多信息，请参阅 [代理示例](https://github.com/dani-garcia/vaultwarden/wiki/Proxy-examples)。
+要解决此问题，请通过 X-Real-IP 标头将真正的远程地址转发给 Vaultwarden。如何执行此操作取决于您使用的代理。例如，在 Caddy 2.x 中，当您定义反向代理时，请定义 `header_up X-Real-IP {remote_host}`。有关更多信息，请参阅 [代理示例](Proxy-examples)。
 
 ### Jail
 

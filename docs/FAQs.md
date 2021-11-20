@@ -29,14 +29,14 @@ CREATE USER 'vaultwarden'@'localhost' IDENTIFIED WITH mysql_native_password BY '
 ALTER USER 'vaultwarden'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourpassword';
 ```
 
-另请参阅：[使用 MariaDB - 创建数据库和用户](https://github.com/dani-garcia/vaultwarden/wiki/Using-the-MariaDB-(MySQL)-Backend#create-database-and-user)
+另请参阅：[使用 MariaDB - 创建数据库和用户](Using-the-MariaDB-(MySQL)-Backend#创建数据库和用户)
 
 ### 我的客户端(桌面、移动、Web)不工作，我无法登录或它抱怨证书无效。
 
 Bitwarden 客户端需要安全连接才能正常工作而不会出现任何问题。尽管有些客户端可以在没有安全连接的情况下工作，但我们不建议这样做。 大多数情况下，当人们使用证书但仍有问题时，他们使用的是所谓的自签名证书。虽然这些可以提供安全连接，但某些平台不允许或不支持这一点。 我们建议使用 Lets Encrypt 之类的服务来提供有效且大多数设备默认接受的证书。 请参阅以下页面：
 
-* [启用-HTTPS](https://github.com/dani-garcia/vaultwarden/wiki/Enabling-HTTPS)
-* [使用 Let's Encrypt 证书运行私有 vaultwarden 实例](https://github.com/dani-garcia/vaultwarden/wiki/Running-a-private-vaultwarden-instance-with-Let's-Encrypt-certs)
+* [启用-HTTPS](Enabling-HTTPS)
+* [使用 Let's Encrypt 证书运行私有 vaultwarden 实例](Running-a-private-vaultwarden-instance-with-Let's-Encrypt-certs)
 
 ### 为什么我看不到所有保管库项目的图标？
 

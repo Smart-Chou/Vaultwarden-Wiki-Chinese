@@ -1,8 +1,8 @@
-假设您想运行一个只能从您的本地网络访问的 vaultwarden 实例，但您希望您的实例启用 HTTPS，并使用由广泛接受的 CA 签署的证书，而不是管理您自己的 [私有 CA](https://github.com/dani-garcia/vaultwarden/wiki/Private-CA-and-self-signed-certs-that-work-with-Chrome)(以避免必须将私有 CA 证书加载到您所有的设备)。
+假设您想运行一个只能从您的本地网络访问的 vaultwarden 实例，但您希望您的实例启用 HTTPS，并使用由广泛接受的 CA 签署的证书，而不是管理您自己的 [私有 CA](Private-CA-and-self-signed-certs-that-work-with-Chrome)(以避免必须将私有 CA 证书加载到您所有的设备)。
 
 本文演示了如何使用 [Caddy](https://caddyserver.com/) Web 服务器创建这样的设置，该服务器具有对各种 DNS 提供商的内置 ACME 支持。我们将配置 Caddy 以通过 ACME [DNS 挑战](https://letsencrypt.org/docs/challenge-types/#dns-01-challenge) 获取 Let's Encrypt 证书——使用更常见的 HTTP 挑战会出现问题在这里，因为它依赖于 Let's Encrypt 服务器能够访问您的内部 Web 服务器。
 
-(请注意，本文以更通用的术语介绍了 DNS 挑战设置，但许多用户可能会发现使用 Docker Compose 来集成 Caddy 和 vaultwarden 最容易。请参阅 [使用 Docker Compose](https://github.com/dani-garcia/vaultwarden/wiki/Using-Docker-Compose#caddy-with-dns-challenge) 以获得特定于此的示例。)
+(请注意，本文以更通用的术语介绍了 DNS 挑战设置，但许多用户可能会发现使用 Docker Compose 来集成 Caddy 和 vaultwarden 最容易。请参阅 [使用 Docker Compose](Using-Docker-Compose#caddy-with-dns-challenge) 以获得特定于此的示例。)
 
 涵盖了两个 DNS 提供商：
 

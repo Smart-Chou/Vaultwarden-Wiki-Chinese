@@ -109,8 +109,8 @@ _注意：您可能会被要求运行 `npm audit fix` 来修复漏洞。这将�
 
 ### 更多部署信息
 
-* [配置你的反向代理](https://github.com/dani-garcia/vaultwarden/wiki/Proxy-examples)
-* [通过 systemd 设置自动启动](https://github.com/dani-garcia/vaultwarden/wiki/Setup-as-a-systemd-service)
+* [配置你的反向代理](Proxy-examples)
+* [通过 systemd 设置自动启动](Setup-as-a-systemd-service)
 
 ### 如何为 sqlite 后端重新创建数据库模式(对于开发人员)
 
@@ -141,8 +141,8 @@ diesel migration redo
 
 ### 如何从 SQLite 后端迁移到 MySQL 后端(针对开发人员)
 
-如果您想从 SQLite 迁移，请参阅[使用 MySQL 后端](https://github.com/dani-garcia/vaultwarden/wiki/Using-the-MySQL-Backend)。
+如果您想从 SQLite 迁移，请参阅[使用 MySQL 后端](Using-the-MySQL-Backend)。
 
 ### 如何从 SQLite 后端迁移到 PostgreSQL 后端(针对开发人员)
 
-如果要从 SQLite 迁移，请参阅[使用 PostgreSQL 后端](https://github.com/dani-garcia/vaultwarden/wiki/Using-the-PostgreSQL-Backend)。
+如果要从 SQLite 迁移，请参阅[使用 PostgreSQL 后端](Using-the-PostgreSQL-Backend)。
