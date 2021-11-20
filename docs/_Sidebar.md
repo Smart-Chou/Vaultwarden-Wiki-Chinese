@@ -1,61 +1,58 @@
-- Home
-  - [主页](home)
-  - [常见问题](FAQs)
+# SUMMARY
 
-- 容器镜像使用
-  - [使用哪个容器镜像](Which-Container-image-to-use)
-  - [启动一个容器](Starting-a-container)
-  - [更新保管库管理员图片](Updating-the-vaultwarden-image)
-  - [使用Docker Compose](Using-Docker-Compose)
-  - [使用Podman](Using-Podman)
-
-- 部署
-  - [构建你自己的docker镜像](Building-your-own-docker-image)
-  - [建筑二进制](Building-binary)
-  - [预建二进制文件](Pre-built-binaries)
-  - [第三方包](Third-party-packages)
-  - [部署示例](Deployment-examples)
-  - [代理示例](Proxy-examples)
-  - [Logrotate 示例](Logrotate-example)
-  - HTTPS
-    - [开启HTTPS](Enabling-HTTPS)
-    - [使用 Let's Encrypt 证书运行私有 Vaultwarden 实例](Running-a-private-vaultwarden-instance-with-Let's-Encrypt-certs)
-
-- 配置
-  - [概览](Configuration-overview)
-  - [禁止新用户注册](Disable-registration-of-new-users)
-  - [禁用邀请](Disable-invitations)
-  - [启用管理页面](Enabling-admin-page)
-  - [禁用admin token](Disable-admin-token)
-  - [启用WebSocket通知](Enabling-WebSocket-notifications)
-  - [开启U2F认证](Enabling-U2F-authentication)
-  - [开启YubiKey OTP认证](Enabling-Yubikey-OTP-authentication)
-  - [更改持久数据位置](Changing-persistent-data-location)
-  - [更改API请求大小限制](Changing-the-API-request-size-limit)
-  - [改变Worker数量](Changing-the-number-of-workers)
-  - [SMTP配置](SMTP-configuration)
-  - [密码提示显示](Password-hint-display)
-  - [禁用或覆盖Vault接口托管](Disabling-or-overriding-the-Vault-interface-hosting)
-  - [登录](Logging)
-  - [创建systemd服务](Setup-as-a-systemd-service)
-  - [从 LDAP 同步用户](Syncing-users-from-LDAP)
-  - [使用备用基目录(subdir/subpath)|](Using-an-alternate-base-dir)
-  - [其他配置](Other-configuration)
-  - 数据库
-    - [使用 MariaDB (MySQL) 后端](Using-the-MariaDB-(MySQL)-Backend)
-    - [使用PostgreSQL后端](Using-the-PostgreSQL-Backend)
-    - [在没有启用 WAL 的情况下运行](Running-without-WAL-enabled)
-    - [从MariaDB（MySQL）迁移到SQLite](Migrating-from-MariaDB-(MySQL)-to-SQLite)
-  - 安全
-    - [强化指南](Hardening-Guide)
-    - [Fail2Ban设置](Fail2Ban-Setup)
-
-- 备份
-  - [通用（不是docker）](General-(not-docker))
-
-- 其他信息
-  - [从Keepass或KeepassX导入数据](Importing-data-from-Keepass-or-KeepassX)
-  - [备份你的保险库](Backing-up-your-vault)
-  - [与上游API实现的区别](Differences-from-the-upstream-API-implementation)
-  - [支持上游开发](Supporting-upstream)
-  - [带有 Cloudflare DNS 的 Caddy 2.x](Caddy-2.x-with-Cloudflare-DNS)
+* Home
+  * [主页](docs/home/)
+  * [常见问题](docs/FAQs/)
+* 容器镜像使用
+  * [使用哪个容器镜像](docs/Which-Container-image-to-use/)
+  * [启动一个容器](docs/Starting-a-container/)
+  * [更新保管库管理员图片](docs/Updating-the-vaultwarden-image/)
+  * [使用Docker Compose](docs/Using-Docker-Compose/)
+  * [使用Podman](docs/Using-Podman/)
+* 部署
+  * [构建你自己的docker镜像](docs/Building-your-own-docker-image/)
+  * [建筑二进制](docs/Building-binary/)
+  * [预建二进制文件](docs/Pre-built-binaries/)
+  * [第三方包](docs/Third-party-packages/)
+  * [部署示例](docs/Deployment-examples/)
+  * [代理示例](docs/Proxy-examples/)
+  * [Logrotate 示例](docs/Logrotate-example/)
+  * HTTPS
+    * [开启HTTPS](docs/Enabling-HTTPS/)
+    * [使用 Let's Encrypt 证书运行私有 Vaultwarden 实例](docs/Running-a-private-vaultwarden-instance-with-Let's-Encrypt-certs/)
+* 配置
+  * [概览](docs/Configuration-overview/)
+  * [禁止新用户注册](docs/Disable-registration-of-new-users/)
+  * [禁用邀请](docs/Disable-invitations/)
+  * [启用管理页面](docs/Enabling-admin-page/)
+  * [禁用admin token](docs/Disable-admin-token/)
+  * [启用WebSocket通知](docs/Enabling-WebSocket-notifications/)
+  * [开启U2F认证](docs/Enabling-U2F-authentication/)
+  * [开启YubiKey OTP认证](docs/Enabling-Yubikey-OTP-authentication/)
+  * [更改持久数据位置](docs/Changing-persistent-data-location/)
+  * [更改API请求大小限制](docs/Changing-the-API-request-size-limit/)
+  * [改变Worker数量](docs/Changing-the-number-of-workers/)
+  * [SMTP配置](docs/SMTP-configuration/)
+  * [密码提示显示](docs/Password-hint-display/)
+  * [禁用或覆盖Vault接口托管](docs/Disabling-or-overriding-the-Vault-interface-hosting/)
+  * [登录](docs/Logging/)
+  * [创建systemd服务](docs/Setup-as-a-systemd-service/)
+  * [从 LDAP 同步用户](docs/Syncing-users-from-LDAP/)
+  * [使用备用基目录(subdir/subpath)|](docs/Using-an-alternate-base-dir/)
+  * [其他配置](docs/Other-configuration/)
+  * 数据库
+    * [使用 MariaDB (MySQL) 后端](docs/Using-the-MariaDB-\(MySQL\)-Backend/)
+    * [使用PostgreSQL后端](docs/Using-the-PostgreSQL-Backend/)
+    * [在没有启用 WAL 的情况下运行](docs/Running-without-WAL-enabled/)
+    * [从MariaDB（MySQL）迁移到SQLite](docs/Migrating-from-MariaDB-\(MySQL\)-to-SQLite/)
+  * 安全
+    * [强化指南](docs/Hardening-Guide/)
+    * [Fail2Ban设置](docs/Fail2Ban-Setup/)
+* 备份
+  * [通用（不是docker）](docs/General-\(not-docker\)/)
+* 其他信息
+  * [从Keepass或KeepassX导入数据](docs/Importing-data-from-Keepass-or-KeepassX/)
+  * [备份你的保险库](docs/Backing-up-your-vault/)
+  * [与上游API实现的区别](docs/Differences-from-the-upstream-API-implementation/)
+  * [支持上游开发](docs/Supporting-upstream/)
+  * [带有 Cloudflare DNS 的 Caddy 2.x](docs/Caddy-2.x-with-Cloudflare-DNS)
