@@ -11,7 +11,7 @@
 
 致谢 [Translatium](https://webcatalog.io/translatium/)和[Google Translate](https://translate.google.com/)！
 
-!> 个人能力有限，具体请以 [Vaultwarden Wiki](https://github.com/dani-garcia/vaultwarden/wiki) 官方页面为准。使用本手册所产生的一切后果，与 **@wcjxixi** 无关。Use at your own risk！！！
+⚠️ 个人能力有限，具体请以 [Vaultwarden Wiki](https://github.com/dani-garcia/vaultwarden/wiki) 官方页面为准。使用本手册所产生的一切后果，与 **@wcjxixi** 无关。Use at your own risk！！！
 
 ## Vaultwarden 是什么
 
@@ -26,7 +26,7 @@ Vaultwarden 很轻量，对于不希望使用官方的占用大量资源的自�
 
 ## 公共实例
 
-!> 注意：请自行决定使用这些公共实例所存在的安全风险。
+:warning: 注意：请自行决定使用这些公共实例所存在的安全风险。
 
 - <https://bitwarden.garudalinux.org/>
 - <https://vault.tedomum.net/>
