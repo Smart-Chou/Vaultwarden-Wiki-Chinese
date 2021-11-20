@@ -1,6 +1,4 @@
-# \_coverpage
-
-![logo](docs/\_media/bitwarden-index.svg)
+![logo](_media/bitwarden-index.svg)
 
 ## Vaultwarden 2.23.0
 
@@ -10,6 +8,7 @@
 * 开源透明度
 * 全球访问
 
-[GitHub](https://github.com/dani-garcia/vaultwarden) [Get Started](\_coverpage.md#vaultwarden-wiki-中文版)
+[GitHub](https://github.com/dani-garcia/vaultwarden)
+[Get Started](#vaultwarden-wiki-中文版)
 
-![bg](docs/\_media/bg.png)
+![bg](_media/bg.png)

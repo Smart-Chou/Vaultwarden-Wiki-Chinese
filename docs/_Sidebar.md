@@ -1,5 +1,3 @@
-# SUMMARY
-
 * Home
   * [主页](docs/home/)
   * [常见问题](docs/FAQs/)
