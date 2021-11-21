@@ -15,6 +15,7 @@
   * [部署示例](Deployment-examples)
   * [代理示例](Proxy-examples)
   * [Logrotate 示例](Logrotate-example)
+  * [*Kubernetes 部署](Kubernetes-deployment)
   * HTTPS
     * [开启HTTPS](Enabling-HTTPS)
     * [使用 Let's Encrypt 证书运行私有 Vaultwarden 实例](Running-a-private-vaultwarden-instance-with-Let's-Encrypt-certs)
@@ -38,6 +39,7 @@
   * [*使用 systemd docker 运行](Running-with-systemd-docker)
   * [从 LDAP 同步用户](Syncing-users-from-LDAP)
   * [使用备用基本目录(子目录)](Using-an-alternate-base-dir)
+  * [*非 root 用户身份运行容器](Running-docker-container-with-non-root-user)
   * [其他配置](Other-configuration)
   * 数据库
     * [使用 MariaDB (MySQL) 后端](Using-the-MariaDB-(MySQL)-Backend)
