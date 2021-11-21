@@ -1,6 +1,6 @@
 ![logo](_media/bitwarden-index.svg)
 
-## Vaultwarden 2.23.0
+## Vaultwarden <small>2.23.0</small>
 
 > 最值得信赖的开源密码管理器
 
